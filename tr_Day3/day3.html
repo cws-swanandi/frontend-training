@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">    
+    <head>  
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 3</title> 
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #feacac;
+            }
+        </style>   
+    </head>
+    <body>
+        <button onclick="changeText()">Change Text</button><br><br>
+        <p id="text">Original Text</p>
+        <script>
+        function changeText() {
+            document.getElementById("text").innerText = "Text Changed!";
+        }
+        </script>
+
+        <button onclick="changeColor()">Change Color</button><br><br>
+        <script>    
+        function changeColor() {
+                document.body.style.backgroundColor = "lightblue";
+            }
+        </script>
+
+        <button onclick="togglebox()">hide/show</button><br><br>
+        <div id="box" style="width:100px; height:100px; background-color:red;"></div>
+        <script>    
+        function togglebox() {
+                var box = document.getElementById("box");
+                if (box.style.display === "none") {
+                    box.style.display = "block";
+                } else {
+                    box.style.display = "none";
+                }
+            }
+        </script>
+
+        
+        <img id="image" src="https://img.magnific.com/free-photo/female-hand-typing-keyboard-laptop_1150-15742.jpg?semt=ais_hybrid&w=740&q=80" style="width:150px; height:150px;"><br><br>
+        <button onclick="changeImage()">Change Image</button><br><br>
+        <script>
+        function changeImage() {
+            var image = document.getElementById("image");
+            image.src = "https://images.unsplash.com/photo-1587831990711-23ca6441447b?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGVza3RvcCUyMGNvbXB1dGVyfGVufDB8fDB8fHww";
+        }   
+        </script>
+
+        
+        <form onsubmit="return validateForm()">
+            Name: <input type="text" id="name"><br><br>
+            <span id="nameError" style="color:red"></span><br>
+
+            Email: <input type="text" id="email"><br><br>
+            <span id="emailError" style="color:red"></span><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <script>
+        function validateForm() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let nameError = document.getElementById("nameError");
+            let emailError = document.getElementById("emailError");
+            let isValid = true;
+
+            if (name.trim() === "") {
+                nameError.innerText = "Name is required.";
+                isValid = false;
+            } else {
+                nameError.innerText = "";
+            }
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                emailError.innerText = "Invalid email format.";
+                isValid = false;
+            } else {
+                emailError.innerText = "";
+            }
+
+            return isValid; 
+        }
+        </script>
+    </body>
+</html>

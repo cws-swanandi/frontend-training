@@ -1,0 +1,18 @@
+.App{
+    align-items: center;
+    text-align: center;
+}
+.counter{
+  align-items: center;
+  text-align: center;
+}
+.counter button{
+    margin: 10px;
+    padding: 10px 15px;
+}
+
+
+.timer{
+    align-items: center;
+    text-align: center;
+}

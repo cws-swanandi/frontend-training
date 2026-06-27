@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2</title>    
+
+    <style>
+        *{
+            font-family: monospace;
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            font-family: monospace;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            border: 1px solid rgba(74, 108, 247, 0.25);
+            border-radius: 16px;
+            padding: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .container div {
+            flex: 1;
+            display: block;
+            width: 100%;
+            max-width: 100px;
+            margin: 0 auto;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #4a6cf7, #6a8dff);
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .container div:hover {
+            box-shadow: 0 10px 18px rgba(0, 24, 122, 0.386);
+        }
+        .container div a {
+            text-decoration: none;
+            color: white;
+        }
+        .container div a:hover {
+            text-decoration: underline;
+        }
+        #box {
+            background-color: #f1f1f1;
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid rgba(74, 108, 247, 0.25);
+            border-radius: 16px;
+            padding: 20px;
+            background: linear-gradient(to right, rgba(0, 8, 39, 0.589), rgba(255, 255, 255, 0.7)),
+            url("https://images.unsplash.com/photo-1519389950473-47ba0277781c");
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .card {
+            flex: 1 1 280px;
+            min-width: 280px;
+            max-width: 360px;
+            padding: 24px;
+            background: #f7f9ff;
+            border: 1px solid rgba(74, 108, 247, 0.25);
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(74, 108, 247, 0.12);
+        }
+        .card:hover {
+            box-shadow: 0 10px 18px rgba(0, 24, 122, 0.386);
+            transform: translateY(-5px);
+        }
+
+        
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .cards {
+        flex-direction: column;
+    }
+    #box {
+        padding: 15px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Frontend Services Website</h1>
+    <div id="container" class="container">
+        <div><a href="#container">Home</a></div>
+        <div><a href="#box">About</a></div>
+        <div><a href="#card">Services</a></div>
+        <div><a href="#contact">Contact</a></div>
+    </div>
+    <br><br> 
+    <div id="box" >
+        <h1>About Us</h1>
+        <br><p align="center">We are a leading provider of frontend services, specializing in creating beautiful and responsive web applications. Our team of experts is dedicated to delivering high-quality solutions that meet the unique needs of our clients.</p>
+    </div>
+    <br><br>
+    <div class="cards" id="card">
+        <div class="card">
+            <h1>Web Development</h1>
+            <p align="center">We build responsive and modern websites using HTML, CSS, and JavaScript to ensure a smooth user experience.</p>
+        </div>
+        <div class="card">
+            <h1>UI/UX Design</h1>
+            <p align="center">Our design team creates intuitive and visually appealing interfaces that enhance user engagement and satisfaction.</p>
+        </div>
+        <div class="card">
+            <h1>App Development</h1>
+            <p align="center">We create fast and scalable mobile and web applications using modern development frameworks.</p>
+        </div>
+    </div>
+    <br><br>
+    <div id="contact">  
+        <h1>Contact Us</h1>
+        <p align="center">Email: <a href="mailto:cws.swanandi@gmail.com">cws.swanandi@gmail.com</a></p>
+        <p align="center">Phone: +91 1234567890</p>
+        <p align="center">Address: 123 Main Street, City, Country</p>   
+    </div>
+</body>

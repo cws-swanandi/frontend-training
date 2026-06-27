@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                background: white;
+                min-height: 100vh;
+
+                display: flex;
+                justify-content: center;  
+                align-items: center;      
+            }
+
+        .modeButton {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            padding: 12px 0;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #03186c, #3562f7);
+            color: rgb(255, 255, 255);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .modeButton:hover{
+            box-shadow: 0 10px 18px rgba(74, 108, 247, 0.2);
+        }
+
+        header,
+        .centered-section {
+            text-align: center;
+        }
+
+        .box {
+            width: 600px;
+            padding: 24px;
+            margin: 75px;
+            display: inline-block;
+            background: linear-gradient(to right,rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.733) 40%,rgba(255, 255, 255, 0.792) 60%, #ffffff 90%),
+            url("https://i.pinimg.com/736x/ff/3b/55/ff3b55240fb3bee89041d51dffbc3dd8.jpg");;
+            border: 1px solid rgba(74, 108, 247, 0.25);
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(214, 220, 243, 0.12);
+            align-items: right;
+        }
+
+        .form-box {
+            width: 320px;
+            margin: auto;
+            padding: 24px;
+            text-align: left;
+
+        }
+
+        .form-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1f2a56;
+        }
+
+        .form-box input[type="text"],
+        .form-box input[type="number"],
+        .form-box input[type="email"],
+        .form-box input[type="tel"],
+        .form-box input[type="password"],
+        .form-box select {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            border: 1px solid #d7ddea;
+            border-radius: 10px;
+            background: white;
+            font-size: 0.95rem;
+            color: #1f2a56;
+            box-sizing: border-box;
+        }
+
+        .form-box input[type="text"]:focus,
+        .form-box input[type="number"]:focus,
+        .form-box input[type="email"]:focus,
+        .form-box input[type="tel"]:focus,
+        .form-box input[type="password"]:focus, 
+        .form-box select:focus {
+            outline: none;
+            border-color: #4a6cf7;
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.12);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            padding: 12px 0;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #4a6cf7, #6a8dff);
+            color: rgb(255, 255, 255);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 10px 18px rgba(74, 108, 247, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+    <button class="modeButton" onclick="toggleMode()">Dark Mode</button>
+    <div class="box">
+        <header>
+            <h1 onmouseover="showMessage()">Registration Form</h1>
+            <p id="hoverMsg"></p>
+        </header>
+        <section class="centered-section">
+            <div class="form-box">
+                <form id="registrationForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="16" max="120" required onchange="checkAge()">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+
+                    <label for="password">Password:</label> 
+                    <input type="password" id="password" onkeyup="countChars()" name="password" required title="Password must be at least 8 characters long." >
+                    <p id="charCount">0 / 8</p>
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required title="Please confirm your password">
+    
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <script>
+            document.getElementById("registrationForm").addEventListener("submit", function(e) {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const age = document.getElementById("age").value;
+            if (age < 18) {
+                e.preventDefault();
+                alert("You must be at least 18 years old.");
+                return;
+            }
+            if (password.length < 8) {
+                e.preventDefault();
+                alert("Password must be at least 8 characters!");
+                return;
+            }
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert("Passwords do not match!");
+                return;
+            }
+            });
+
+            function countChars() {
+                let passwordLength = document.getElementById("password").value.length;
+                document.getElementById("charCount").innerHTML =
+                    passwordLength + " / 8";
+                if (passwordLength < 8) {
+                    document.getElementById("charCount").style.color = "red";
+                }
+                else {
+                    document.getElementById("charCount").style.color = "green";
+                }
+            }
+
+            function toggleMode() {
+                const body = document.body;
+                const button = document.querySelector('.modeButton');
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    button.textContent = 'Light Mode';
+                    button.style.color = 'black';
+                    button.style.background = 'linear-gradient(90deg, #b7c3f2, #7390ef)';
+                    body.style.background = 'black';
+                    button.style.boxShadow = "0 12px 30px rgba(206, 213, 243, 0.12)";
+                } else {
+                    button.textContent = 'Dark Mode';
+                    button.style.color = 'white';
+                    button.style.background = 'linear-gradient(90deg, #03186c, #3562f7)';
+                    body.style.background = 'white';
+                }
+            }
+
+            function showMessage() {
+                document.getElementById("hoverMsg").innerHTML ="Welcome! Please fill out the form.";
+            }
+
+            function checkAge() {
+                let age = document.getElementById("age").value;
+                if (age < 18) {
+                    alert("You must be at least 18 years old.");
+                }
+            }
+        </script>
+
+
+</body>
+</html>
